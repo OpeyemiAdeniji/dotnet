@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace BuggyAmb
 {
@@ -36,6 +38,13 @@ namespace BuggyAmb
             {
                 app.UseExceptionHandler("/Error");
             }
+             
+            // Add the X-Content-Type-Options header
+            // app.Use(async (context, next) =>
+            // {
+            //     context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+            //     await next();
+            // });
 
             app.UseStaticFiles();
 
@@ -50,3 +59,4 @@ namespace BuggyAmb
         }
     }
 }
+
